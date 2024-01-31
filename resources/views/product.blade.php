@@ -1,4 +1,3 @@
-{{-- @dd($TagList) --}}
 @extends('layout')
 @section('content')
 <div class="headerSection">
@@ -108,6 +107,17 @@
                         <select name="category_id" class='form-select  mt-3'>
                           @foreach($categories as $categorie)
                           <option value="{{ $categorie->id}}">{{$categorie->name}}</option>
+                          @endforeach
+                        </select>
+                        <select name="tages_id[]" class='form-select  mt-3' multiple>
+                          @foreach($tages as $tage)
+                          <option value="{{ $tage->id }}" 
+                            @if(isset($TagList[$product->id]))
+                                @foreach($TagList[$product->id] as $selectedTag)
+                                    @if($tage->id == $selectedTag->id) selected @endif
+                                @endforeach
+                            @endif > {{ $tage->name }}
+                          </option>
                           @endforeach
                         </select>
                         <div class="button mt-3 mb-3 d-flex gap-2 justify-content-end">

@@ -51,6 +51,7 @@ class ProductController extends Controller
             'price' => 'required',
             'description' => 'required',
             'category_id' => 'required',
+            'tages_id' => '',
         ]);
         Product::where('id',$id)->update([
             'name' => $validatedData['name'],
@@ -58,6 +59,15 @@ class ProductController extends Controller
             'description' => $validatedData['description'],
             'category_id' => $validatedData['category_id'],
         ]);
+        ProductTag::where('product_id',$id)->delete();
+        foreach($validatedData['tages_id'] as $dataTage){
+            $tages = [
+                'tage_id' => $dataTage,
+                'product_id' => $id,
+            ];
+            ProductTag::create($tages);
+        }
+        
         return redirect('/Products');
     }
 

@@ -11,7 +11,11 @@ class TagesControllers extends Controller
         $tages = Tage::all();
         return view("tages",compact('tages'));
     }
-    public function add(){
-        
+    public function add(Request $request){
+        $validatedData = $request->validate([
+            'name' => 'required|unique:tages,name',
+        ]);
+        Tage::create($validatedData);
+        return redirect('/Tags');
     }
 }

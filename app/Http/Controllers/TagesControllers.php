@@ -8,7 +8,10 @@ use App\Models\Tage;
 class TagesControllers extends Controller
 {
     public function index(){
-        $categories = Tage::all();
+        $tages = Tage::all();
         return view("tages",compact('tages'));
+    }
+    public function add(){
+        
     }
 }

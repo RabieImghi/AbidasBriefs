@@ -85,7 +85,7 @@
                   <h2>Add New Product</h2>
                 </div>
                 <div class="modal-body">
-                    <form action="/UpdateProduct" method='post'>
+                    <form action="/UpdateProduct/{{$product->id}}" method='POST'>
                         @csrf
                         <input type="text" name='name' value='{{$product->name}}' class="form-control mt-3" placeholder="Product Name">
                         <input type="Number" name='price' value='{{$product->price}}'  class="form-control mt-3" placeholder="Product Price">
@@ -96,7 +96,7 @@
                           @endforeach
                         </select>
                         <div class="button mt-3 mb-3 d-flex gap-2 justify-content-end">
-                            <button type="submit" class="btn btn-outline-success">Add</button>
+                            <button type="submit" class="btn btn-outline-success">Update</button>
                             <button type="reset"  data-bs-dismiss="modal" class="btn btn-outline-dark">Close</button>
                         </div>
                     </form>

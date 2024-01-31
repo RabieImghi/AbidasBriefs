@@ -30,4 +30,5 @@ Route::get('/DeletCategory/{id}', [CategoriesControllers::class, 'delet']);
 Route::get('/Tags', [TagesControllers::class, 'index']);
 Route::post('/addTags', [TagesControllers::class, 'add']);
 Route::post('/updateTags/{id}', [TagesControllers::class, 'update']);
+Route::get('/DeletTage/{id}', [TagesControllers::class, 'delet']);
 

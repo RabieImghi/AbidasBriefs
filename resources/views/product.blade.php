@@ -66,9 +66,11 @@
         </td>
         <td>
           
+        @if(!empty($TagList[$product->id]))
           @foreach($TagList[$product->id] as $tageList)
-          <span class="fw-normal mb-1 mx-1"> {{$tageList->name}}</span>
+              <span class="fw-normal mb-1 mx-1">{{$tageList->name}}</span>
           @endforeach
+        @endif
         </td>
         <td>
         <svg data-bs-toggle="modal" data-bs-target="#updateCategory{{$product->id}}" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="cursor-pointer bi bi-pencil-square" viewBox="0 0 16 16">

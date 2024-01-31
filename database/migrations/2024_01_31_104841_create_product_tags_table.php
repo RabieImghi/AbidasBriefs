@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->engine = 'InnoDB';
             $table->unsignedBigInteger('tage_id');
-            $table->foreign('tage_id')->references('id')->on('tages');
+            $table->foreign('tage_id')->references('id')->on('tages')->onDelete('cascade');
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
         });
     }

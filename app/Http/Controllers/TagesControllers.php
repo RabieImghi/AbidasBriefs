@@ -27,4 +27,8 @@ class TagesControllers extends Controller
         ]);
         return redirect('/Tags');
     }
+    public function delet($id){
+        Tage::find($id)->delete();
+        return redirect('/Tags');
+    }
 }

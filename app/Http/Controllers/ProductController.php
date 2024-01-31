@@ -22,7 +22,10 @@ class ProductController extends Controller
         ]);
         Product::create($validatedData);
         return redirect('/Products')->with('success', 'User created successfully!');
-
+    }
+    public function delet($id){
+        Product::find($id)->delete();
+        return redirect('/Products');
     }
 
 }

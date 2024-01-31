@@ -19,6 +19,8 @@ Route::get('/', [Controller::class, 'index']);
 Route::get('/Products', [ProductController::class, 'index']);
 Route::get('/Categories', [CategoriesControllers::class, 'index']);
 Route::post('/addProduct', [ProductController::class, 'add']);
+Route::get('/DeletProduct/{id}', [ProductController::class, 'delet']);
+
 Route::post('/addCategory', [CategoriesControllers::class, 'add']);
 Route::post('/updateCategory/{id}', [CategoriesControllers::class, 'update']);
 Route::get('/DeletCategory/{id}', [CategoriesControllers::class, 'delet']);

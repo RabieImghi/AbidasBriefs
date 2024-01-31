@@ -1,3 +1,4 @@
+{{-- @dd($TagList) --}}
 @extends('layout')
 @section('content')
 <div class="headerSection">
@@ -23,6 +24,11 @@
                     <option value="{{ $categorie->id}}">{{$categorie->name}}</option>
                     @endforeach
                   </select>
+                  <select name="tages_id[]" class='form-select  mt-3' multiple>
+                    @foreach($tages as $tage)
+                    <option value="{{ $tage->id}}">{{$tage->name}}</option>
+                    @endforeach
+                  </select>
                   <div class="button mt-3 mb-3 d-flex gap-2 justify-content-end">
                       <button type="submit" class="btn btn-outline-success">Add</button>
                       <button type="reset"  data-bs-dismiss="modal" class="btn btn-outline-dark">Close</button>
@@ -39,6 +45,7 @@
         <th>Product Name </th>
         <th>Product Description </th>
         <th>Category Name</th>
+        <th>Tages Names</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -56,6 +63,12 @@
         </td>
         <td>
           <p class="fw-normal mb-1">{{$product->category->name}}</p>
+        </td>
+        <td>
+          
+          @foreach($TagList[$product->id] as $tageList)
+          <span class="fw-normal mb-1 mx-1"> {{$tageList->name}}</span>
+          @endforeach
         </td>
         <td>
         <svg data-bs-toggle="modal" data-bs-target="#updateCategory{{$product->id}}" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="cursor-pointer bi bi-pencil-square" viewBox="0 0 16 16">

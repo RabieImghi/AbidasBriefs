@@ -5,13 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Categorie;
+use App\Models\Tage;
+use App\Models\ProductTag;
 
 class ProductController extends Controller
 {
     public function index(){
-        $products = Product::with('category')->get();
+        $products = Product::with('category')->with('tage')->get();
+        $TagList = [];
+        foreach($products as $product){
+            foreach($product['tage'] as $tages){
+                $TagList[$tages['product_id']][]=Tage::where('id',$tages['tage_id'])->get()[0];
+            }
+        }
         $categories = Categorie::all();
-        return view("product",compact('products','categories'));
+        $tages = Tage::all();
+        return view("product",compact('products','categories','tages','TagList'));
     }
     public function add(Request $request){
         $validatedData = $request->validate([
@@ -19,8 +28,17 @@ class ProductController extends Controller
             'price' => 'required',
             'description' => 'required',
             'category_id' => 'required',
+            'tages_id' => '',
         ]);
-        Product::create($validatedData);
+        $product = Product::create($validatedData);
+        $lastInsertedId = $product->id;
+        foreach($validatedData['tages_id'] as $dataTage){
+            $tages = [
+                'tage_id' => $dataTage,
+                'product_id' => $lastInsertedId,
+            ];
+            ProductTag::create($tages);
+        }
         return redirect('/Products');
     }
     public function delet($id){

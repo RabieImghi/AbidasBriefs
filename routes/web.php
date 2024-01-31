@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoriesControllers;
+use App\Http\Controllers\TagesControllers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +26,6 @@ Route::post('/UpdateProduct/{id}', [ProductController::class, 'update']);
 Route::post('/addCategory', [CategoriesControllers::class, 'add']);
 Route::post('/updateCategory/{id}', [CategoriesControllers::class, 'update']);
 Route::get('/DeletCategory/{id}', [CategoriesControllers::class, 'delet']);
+
+Route::get('/Tags', [TagesControllers::class, 'index']);
+

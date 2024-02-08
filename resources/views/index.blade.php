@@ -1,105 +1,506 @@
 @extends('layout')
 @section('content')
-<section class=" ml-2 ">
-    <div class="headerSection">
-        <h2>Dashboard</h2>
-        <span><span>Home</span> / Dashboard</span>
+<div class="nk-content-body">
+    <div class="nk-block-head nk-block-head-sm">
+        <div class="nk-block-between">
+            <div class="nk-block-head-content">
+                <h4 class="nk-block-title page-title">Dashboard</h4>
+            </div>
+        </div>
     </div>
-    <div class="mt-3 cards d-flex justify-content-between w-full">
-        <div class="">
-            <div class="card info-card sales-card">
-                <div class="card-body">
-                <h5 class="card-title">Sales <span>| Today</span></h5>
-
-                <div class="d-flex align-items-center">
-                    <div class="icon icon-shape bg-success text-white rounded-circle shadow">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div class="card_footr ml-2">
-                        <h6>145</h6>
-                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
+    <div class="nk-block">
+        <div class="row g-gs">
+            <div class="col-xxl-4 col-md-6">
+                <div class="card is-dark h-100">
+                    <div class="nk-ecwg nk-ecwg1">
+                        <div class="card-inner">
+                            <div class="card-title-group">
+                                <div class="card-title">
+                                    <h6 class="title">Total Sales</h6>
+                                </div>
+                                <div class="card-tools">
+                                    <a href="#" class="link">View Report</a>
+                                </div>
+                            </div>
+                            <div class="data">
+                                <div class="amount">$74,958.49</div>
+                                <div class="info"><strong>$7,395.37</strong> in last month</div>
+                            </div>
+                            <div class="data">
+                                <h6 class="sub-title">This week so far</h6>
+                                <div class="data-group">
+                                    <div class="amount">$1,338.72</div>
+                                    <div class="info text-end"><span class="change up text-danger"><em class="icon ni ni-arrow-long-up"></em>4.63%</span><br><span>vs. last week</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nk-ecwg1-ck"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                            <canvas class="ecommerce-line-chart-s1 chartjs-render-monitor" id="totalSales" width="1044" height="220" style="display: block; width: 522px; height: 110px;"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            </div>
-        </div>
-        <div class="">
-            <div class="card info-card sales-card">
-                <div class="card-body">
-                <h5 class="card-title">Sales <span>| Today</span></h5>
-
-                <div class="d-flex align-items-center">
-                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div class="card_footr ml-2">
-                        <h6>145</h6>
-                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
-                    </div>
-                </div>
-            </div>
-
-            </div>
-        </div>
-        <div class="">
-            <div class="card info-card sales-card">
-                <div class="card-body">
-                <h5 class="card-title">Sales <span>| Today</span></h5>
-
-                <div class="d-flex align-items-center">
-                    <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div class="card_footr ml-2">
-                        <h6>145</h6>
-                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
+            <div class="col-xxl-4 col-md-6">
+                <div class="card h-100">
+                    <div class="nk-ecwg nk-ecwg2">
+                        <div class="card-inner">
+                            <div class="card-title-group mt-n1">
+                                <div class="card-title">
+                                    <h6 class="title">Averarge order</h6>
+                                </div>
+                                <div class="card-tools me-n1">
+                                    <div class="dropdown">
+                                        <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
+                                            <ul class="link-list-opt no-bdr">
+                                                <li><a href="#" class="active"><span>15 Days</span></a></li>
+                                                <li><a href="#"><span>30 Days</span></a></li>
+                                                <li><a href="#"><span>3 Months</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="data">
+                                <div class="data-group">
+                                    <div class="amount">$463.35</div>
+                                    <div class="info text-end"><span class="change up text-danger"><em class="icon ni ni-arrow-long-up"></em>4.63%</span><br><span>vs. last week</span></div>
+                                </div>
+                            </div>
+                            <h6 class="sub-title">Orders over time</h6>
+                        </div>
+                        <div class="nk-ecwg2-ck"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                            <canvas class="ecommerce-bar-chart-s1 chartjs-render-monitor" id="averargeOrder" width="1044" height="364" style="display: block; width: 522px; height: 182px;"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
-
+            <div class="col-xxl-4">
+                <div class="row g-gs">
+                    <div class="col-xxl-12 col-md-6">
+                        <div class="card">
+                            <div class="nk-ecwg nk-ecwg3">
+                                <div class="card-inner pb-0">
+                                    <div class="card-title-group">
+                                        <div class="card-title">
+                                            <h6 class="title">Orders</h6>
+                                        </div>
+                                    </div>
+                                    <div class="data">
+                                        <div class="data-group">
+                                            <div class="amount">329</div>
+                                            <div class="info text-end"><span class="change up text-danger"><em class="icon ni ni-arrow-long-up"></em>4.63%</span><br><span>vs. last week</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nk-ecwg3-ck"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                                    <canvas class="ecommerce-line-chart-s1 chartjs-render-monitor" id="totalOrders" width="1044" height="132" style="display: block; width: 522px; height: 66px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-12 col-md-6">
+                        <div class="card">
+                            <div class="nk-ecwg nk-ecwg3">
+                                <div class="card-inner pb-0">
+                                    <div class="card-title-group">
+                                        <div class="card-title">
+                                            <h6 class="title">Customers</h6>
+                                        </div>
+                                    </div>
+                                    <div class="data">
+                                        <div class="data-group">
+                                            <div class="amount">194</div>
+                                            <div class="info text-end"><span class="change up text-danger"><em class="icon ni ni-arrow-long-up"></em>4.63%</span><br><span>vs. last week</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nk-ecwg3-ck"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                                    <canvas class="ecommerce-line-chart-s1 chartjs-render-monitor" id="totalCustomers" width="1044" height="132" style="display: block; width: 522px; height: 66px;"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-8">
+                <div class="card card-full">
+                    <div class="card-inner">
+                        <div class="card-title-group">
+                            <div class="card-title">
+                                <h6 class="title">Recent Orders</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nk-tb-list mt-n2">
+                        <div class="nk-tb-item nk-tb-head">
+                            <div class="nk-tb-col"><span>Order No.</span></div>
+                            <div class="nk-tb-col tb-col-sm"><span>Customer</span></div>
+                            <div class="nk-tb-col tb-col-md"><span>Date</span></div>
+                            <div class="nk-tb-col"><span>Amount</span></div>
+                            <div class="nk-tb-col"><span class="d-none d-sm-inline">Status</span></div>
+                        </div>
+                        <div class="nk-tb-item">
+                            <div class="nk-tb-col">
+                                <span class="tb-lead"><a href="#">#95954</a></span>
+                            </div>
+                            <div class="nk-tb-col tb-col-sm">
+                                <div class="user-card">
+                                    <div class="user-avatar sm bg-purple-dim">
+                                        <span>AB</span>
+                                    </div>
+                                    <div class="user-name">
+                                        <span class="tb-lead">Abu Bin Ishtiyak</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nk-tb-col tb-col-md">
+                                <span class="tb-sub">02/11/2020</span>
+                            </div>
+                            <div class="nk-tb-col">
+                                <span class="tb-sub tb-amount">4,596.75 <span>USD</span></span>
+                            </div>
+                            <div class="nk-tb-col">
+                                <span class="badge badge-dot badge-dot-xs bg-success">Paid</span>
+                            </div>
+                        </div>
+                        <div class="nk-tb-item">
+                            <div class="nk-tb-col">
+                                <span class="tb-lead"><a href="#">#95850</a></span>
+                            </div>
+                            <div class="nk-tb-col tb-col-sm">
+                                <div class="user-card">
+                                    <div class="user-avatar sm bg-azure-dim">
+                                        <span>DE</span>
+                                    </div>
+                                    <div class="user-name">
+                                        <span class="tb-lead">Desiree Edwards</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nk-tb-col tb-col-md">
+                                <span class="tb-sub">02/02/2020</span>
+                            </div>
+                            <div class="nk-tb-col">
+                                <span class="tb-sub tb-amount">596.75 <span>USD</span></span>
+                            </div>
+                            <div class="nk-tb-col">
+                                <span class="badge badge-dot badge-dot-xs bg-danger">Canceled</span>
+                            </div>
+                        </div>
+                        <div class="nk-tb-item">
+                            <div class="nk-tb-col">
+                                <span class="tb-lead"><a href="#">#95812</a></span>
+                            </div>
+                            <div class="nk-tb-col tb-col-sm">
+                                <div class="user-card">
+                                    <div class="user-avatar sm bg-warning-dim">
+                                        <img src="./images/avatar/b-sm.jpg" alt="">
+                                    </div>
+                                    <div class="user-name">
+                                        <span class="tb-lead">Blanca Schultz</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nk-tb-col tb-col-md">
+                                <span class="tb-sub">02/01/2020</span>
+                            </div>
+                            <div class="nk-tb-col">
+                                <span class="tb-sub tb-amount">199.99 <span>USD</span></span>
+                            </div>
+                            <div class="nk-tb-col">
+                                <span class="badge badge-dot badge-dot-xs bg-success">Paid</span>
+                            </div>
+                        </div>
+                        <div class="nk-tb-item">
+                            <div class="nk-tb-col">
+                                <span class="tb-lead"><a href="#">#95256</a></span>
+                            </div>
+                            <div class="nk-tb-col tb-col-sm">
+                                <div class="user-card">
+                                    <div class="user-avatar sm bg-purple-dim">
+                                        <span>NL</span>
+                                    </div>
+                                    <div class="user-name">
+                                        <span class="tb-lead">Naomi Lawrence</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nk-tb-col tb-col-md">
+                                <span class="tb-sub">01/29/2020</span>
+                            </div>
+                            <div class="nk-tb-col">
+                                <span class="tb-sub tb-amount">1099.99 <span>USD</span></span>
+                            </div>
+                            <div class="nk-tb-col">
+                                <span class="badge badge-dot badge-dot-xs bg-success">Paid</span>
+                            </div>
+                        </div>
+                        <div class="nk-tb-item">
+                            <div class="nk-tb-col">
+                                <span class="tb-lead"><a href="#">#95135</a></span>
+                            </div>
+                            <div class="nk-tb-col tb-col-sm">
+                                <div class="user-card">
+                                    <div class="user-avatar sm bg-success-dim">
+                                        <span>CH</span>
+                                    </div>
+                                    <div class="user-name">
+                                        <span class="tb-lead">Cassandra Hogan</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="nk-tb-col tb-col-md">
+                                <span class="tb-sub">01/29/2020</span>
+                            </div>
+                            <div class="nk-tb-col">
+                                <span class="tb-sub tb-amount">1099.99 <span>USD</span></span>
+                            </div>
+                            <div class="nk-tb-col">
+                                <span class="badge badge-dot badge-dot-xs bg-warning">Due</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-md-6">
+                <div class="card h-100">
+                    <div class="card-inner">
+                        <div class="card-title-group mb-2">
+                            <div class="card-title">
+                                <h6 class="title">Top products</h6>
+                            </div>
+                            <div class="card-tools">
+                                <div class="dropdown">
+                                    <a href="#" class="dropdown-toggle link link-light link-sm dropdown-indicator" data-bs-toggle="dropdown">Weekly</a>
+                                    <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
+                                        <ul class="link-list-opt no-bdr">
+                                            <li><a href="#"><span>Daily</span></a></li>
+                                            <li><a href="#" class="active"><span>Weekly</span></a></li>
+                                            <li><a href="#"><span>Monthly</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="nk-top-products">
+                            <li class="item">
+                                <div class="thumb">
+                                    <img src="./images/product/a.png" alt="">
+                                </div>
+                                <div class="info">
+                                    <div class="title">Pink Fitness Tracker</div>
+                                    <div class="price">$99.00</div>
+                                </div>
+                                <div class="total">
+                                    <div class="amount">$990.00</div>
+                                    <div class="count">10 Sold</div>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="thumb">
+                                    <img src="./images/product/b.png" alt="">
+                                </div>
+                                <div class="info">
+                                    <div class="title">Purple Smartwatch</div>
+                                    <div class="price">$99.00</div>
+                                </div>
+                                <div class="total">
+                                    <div class="amount">$990.00</div>
+                                    <div class="count">10 Sold</div>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="thumb">
+                                    <img src="./images/product/c.png" alt="">
+                                </div>
+                                <div class="info">
+                                    <div class="title">Black Mi Band Smartwatch</div>
+                                    <div class="price">$99.00</div>
+                                </div>
+                                <div class="total">
+                                    <div class="amount">$990.00</div>
+                                    <div class="count">10 Sold</div>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="thumb">
+                                    <img src="./images/product/d.png" alt="">
+                                </div>
+                                <div class="info">
+                                    <div class="title">Black Headphones</div>
+                                    <div class="price">$99.00</div>
+                                </div>
+                                <div class="total">
+                                    <div class="amount">$990.00</div>
+                                    <div class="count">10 Sold</div>
+                                </div>
+                            </li>
+                            <li class="item">
+                                <div class="thumb">
+                                    <img src="./images/product/e.png" alt="">
+                                </div>
+                                <div class="info">
+                                    <div class="title">iPhone 7 Headphones</div>
+                                    <div class="price">$99.00</div>
+                                </div>
+                                <div class="total">
+                                    <div class="amount">$990.00</div>
+                                    <div class="count">10 Sold</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-md-6">
+                <div class="card h-100">
+                    <div class="card-inner">
+                        <div class="card-title-group mb-2">
+                            <div class="card-title">
+                                <h6 class="title">Store Statistics</h6>
+                            </div>
+                        </div>
+                        <ul class="nk-store-statistics">
+                            <li class="item">
+                                <div class="info">
+                                    <div class="title">Orders</div>
+                                    <div class="count">1,795</div>
+                                </div>
+                                <em class="icon bg-primary-dim ni ni-bag"></em>
+                            </li>
+                            <li class="item">
+                                <div class="info">
+                                    <div class="title">Customers</div>
+                                    <div class="count">2,327</div>
+                                </div>
+                                <em class="icon bg-info-dim ni ni-users"></em>
+                            </li>
+                            <li class="item">
+                                <div class="info">
+                                    <div class="title">Products</div>
+                                    <div class="count">674</div>
+                                </div>
+                                <em class="icon bg-pink-dim ni ni-box"></em>
+                            </li>
+                            <li class="item">
+                                <div class="info">
+                                    <div class="title">Categories</div>
+                                    <div class="count">68</div>
+                                </div>
+                                <em class="icon bg-purple-dim ni ni-server"></em>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-5 col-lg-6">
+                <div class="card card-full overflow-hidden">
+                    <div class="nk-ecwg nk-ecwg4 h-100">
+                        <div class="card-inner flex-grow-1">
+                            <div class="card-title-group mb-4">
+                                <div class="card-title">
+                                    <h6 class="title">Traffic Sources</h6>
+                                </div>
+                                <div class="card-tools">
+                                    <div class="dropdown">
+                                        <a href="#" class="dropdown-toggle link link-light link-sm dropdown-indicator" data-bs-toggle="dropdown">30 Days</a>
+                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-end">
+                                            <ul class="link-list-opt no-bdr">
+                                                <li><a href="#"><span>15 Days</span></a></li>
+                                                <li><a href="#" class="active"><span>30 Days</span></a></li>
+                                                <li><a href="#"><span>3 Months</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="data-group">
+                                <div class="nk-ecwg4-ck"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                                    <canvas class="ecommerce-doughnut-s1 chartjs-render-monitor" id="trafficSources" width="180" height="180" style="display: block; width: 180px; height: 180px;"></canvas>
+                                </div>
+                                <ul class="nk-ecwg4-legends">
+                                    <li>
+                                        <div class="title">
+                                            <span class="dot dot-lg sq" data-bg="#9cabff" style="background: rgb(156, 171, 255);"></span>
+                                            <span>Organic Search</span>
+                                        </div>
+                                        <div class="amount amount-xs">4,305</div>
+                                    </li>
+                                    <li>
+                                        <div class="title">
+                                            <span class="dot dot-lg sq" data-bg="#ffa9ce" style="background: rgb(255, 169, 206);"></span>
+                                            <span>Referrals</span>
+                                        </div>
+                                        <div class="amount amount-xs">482</div>
+                                    </li>
+                                    <li>
+                                        <div class="title">
+                                            <span class="dot dot-lg sq" data-bg="#b8acff" style="background: rgb(184, 172, 255);"></span>
+                                            <span>Social Media</span>
+                                        </div>
+                                        <div class="amount amount-xs">859</div>
+                                    </li>
+                                    <li>
+                                        <div class="title">
+                                            <span class="dot dot-lg sq" data-bg="#f9db7b" style="background: rgb(249, 219, 123);"></span>
+                                            <span>Others</span>
+                                        </div>
+                                        <div class="amount amount-xs">138</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-inner card-inner-md bg-light">
+                            <div class="card-note">
+                                <em class="icon ni ni-info-fill"></em>
+                                <span>Traffic channels have beed generating the most traffics over past days.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-4 col-lg-6">
+                <div class="card h-100">
+                    <div class="nk-ecwg nk-ecwg5">
+                        <div class="card-inner">
+                            <div class="card-title-group align-start pb-3 g-2">
+                                <div class="card-title">
+                                    <h6 class="title">Store Visitors</h6>
+                                </div>
+                                <div class="card-tools">
+                                    <em class="card-hint icon ni ni-help" data-bs-toggle="tooltip" data-bs-placement="left" aria-label="Users of this month" data-bs-original-title="Users of this month"></em>
+                                </div>
+                            </div>
+                            <div class="data-group">
+                                <div class="data">
+                                    <div class="title">Monthly</div>
+                                    <div class="amount amount-sm">9.28K</div>
+                                    <div class="change up"><em class="icon ni ni-arrow-long-up"></em>4.63%</div>
+                                </div>
+                                <div class="data">
+                                    <div class="title">Weekly</div>
+                                    <div class="amount amount-sm">2.69K</div>
+                                    <div class="change down"><em class="icon ni ni-arrow-long-down"></em>1.92%</div>
+                                </div>
+                                <div class="data">
+                                    <div class="title">Daily (Avg)</div>
+                                    <div class="amount amount-sm">0.94K</div>
+                                    <div class="change up"><em class="icon ni ni-arrow-long-up"></em>3.45%</div>
+                                </div>
+                            </div>
+                            <div class="nk-ecwg5-ck"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                                <canvas class="ecommerce-line-chart-s4 chartjs-render-monitor" id="storeVisitors" width="948" height="280" style="display: block; width: 474px; height: 140px;"></canvas>
+                            </div>
+                            <div class="chart-label-group">
+                                <div class="chart-label">01 Jul, 2020</div>
+                                <div class="chart-label">30 Jul, 2020</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
-    <div class="card-body mt-5">
-        <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns"><div class="datatable-top">
-            
-            <div class="datatable-search mt-4 w-25 mb-3">
-                <input class="form-control" placeholder="Search..." type="search" title="Search within table">
-            </div>
-        </div>
-        <div class="datatable-container">
-            <table class="table table-borderless datatable datatable-table">
-                <thead>
-                    <tr>
-                        <th data-sortable="true" style="width: 10.648148148148149%;">
-                            #
-                        </th>
-                        <th data-sortable="true" style="width: 23.456790123456788%;">
-                            Customer
-                        </th>
-                        <th data-sortable="true" style="width: 39.351851851851855%;">
-                            Product
-                        </th>
-                        <th data-sortable="true" style="width: 11.728395061728394%;">
-                            Price
-                        </th>
-                        <th data-sortable="true" class="red" style="width: 14.814814814814813%;">
-                            Status
-                        </th>
-                    </tr>
-                </thead>
-                <tbody><tr data-index="0"><td><a href="#">#2457</a></td><td>Brandon Jacob</td><td><a href="#" class="text-primary">At praesentium minu</a></td><td>$64</td><td class="green"><span class="badge bg-success">Approved</span></td></tr><tr data-index="1"><td><a href="#">#2147</a></td><td>Bridie Kessler</td><td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td><td>$47</td><td class="green"><span class="badge bg-warning">Pending</span></td></tr><tr data-index="2"><td><a href="#">#2049</a></td><td>Ashleigh Langosh</td><td><a href="#" class="text-primary">At recusandae consectetur</a></td><td>$147</td><td class="green"><span class="badge bg-success">Approved</span></td></tr><tr data-index="3"><td><a href="#">#2644</a></td><td>Angus Grady</td><td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td><td>$67</td><td class="green"><span class="badge bg-danger">Rejected</span></td></tr><tr data-index="4"><td><a href="#">#2644</a></td><td>Raheem Lehner</td><td><a href="#" class="text-primary">Sunt similique distinctio</a></td><td>$165</td><td class="green"><span class="badge bg-success">Approved</span></td></tr></tbody></table></div>
-            <div class="datatable-bottom">
-                <div class="datatable-info">Showing 1 to 5 of 5 entries</div>
-                <nav class="datatable-pagination"><ul class="datatable-pagination-list"></ul></nav>
-            </div>
-        </div>
-    
-    </div>
-</section>
+</div> 
 @endsection

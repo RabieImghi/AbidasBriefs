@@ -8,7 +8,7 @@ use App\Models\Categorie;
 class CategoriesControllers extends Controller
 {
     public function index(){
-        $categories = Categorie::all();
+        $categories = Categorie::orderBy('created_at', 'desc')->paginate(7);
         return view("categories",compact('categories'));
     }
     public function add(Request $request){

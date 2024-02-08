@@ -1,89 +1,172 @@
 @extends('layout')
 @section('content')
-<div class="headerSection">
-    <h2>Items</h2>
-    <span><span>Home</span> / Category</span>
-</div>
-<div class="modalAddCatgory mt-3 mb-3">
-  <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addCategory">Add New Category</button>
-  <div class="modal fade" id="addCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2>Add New Category</h2>
-          </div>
-          <div class="modal-body">
-              <form action="/addCategory" method='post'>
-                  @csrf
-                  <input type="text" name='name' class="form-control mt-3" placeholder="Product Name">
-                  <div class="button mt-3 mb-3 d-flex gap-2 justify-content-end">
-                      <button type="submit" class="btn btn-outline-success">Add</button>
-                      <button type="reset"  data-bs-dismiss="modal" class="btn btn-outline-dark">Close</button>
+<div class="nk-content-body">
+    <div class="nk-block-head nk-block-head-sm">
+    <div class="nk-block-between">
+    <div class="nk-block-head-content">
+        <h3 class="nk-block-title page-title">Products</h3>
+    </div>
+    <div class="nk-block-head-content">
+        <div class="toggle-wrap nk-block-tools-toggle">
+            <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+            <div class="toggle-expand-content" data-content="pageMenu">
+                <ul class="nk-block-tools g-3">
+                    <li>
+                        <div class="form-control-wrap">
+                            <div class="form-icon form-icon-right">
+                                <em class="icon ni ni-search"></em>
+                            </div>
+                            <input type="text" class="form-control" id="default-04" placeholder="Quick search by id">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="drodown">
+                            <a href="#" class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white" data-bs-toggle="dropdown">Status</a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <ul class="link-list-opt no-bdr">
+                                    <li><a href="#"><span>New Items</span></a></li>
+                                    <li><a href="#"><span>Featured</span></a></li>
+                                    <li><a href="#"><span>Out of Stock</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nk-block-tools-opt">
+                        <a href="#" data-target="addProduct" class="toggle btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
+                        <a href="#" data-target="addProduct" class="toggle btn btn-primary d-none d-md-inline-flex"><em class="icon ni ni-plus"></em><span>Add Product</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="nk-block">
+    <div class="nk-tb-list is-separate mb-3">
+        <div class="nk-tb-item nk-tb-head">
+            <div class="nk-tb-col nk-tb-col-check">
+                <div class="custom-control custom-control-sm custom-checkbox notext">
+                    <input type="checkbox" class="custom-control-input" id="pid">
+                    <label class="custom-control-label" for="pid"></label>
+                </div>
+            </div>
+            <div class="nk-tb-col tb-col-sm"><span>Name</span></div>
+            <div class="nk-tb-col nk-tb-col-tools">
+                <ul class="nk-tb-actions gx-1 my-n1">
+                    <li class="me-n1">
+                        <div class="dropdown">
+                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <ul class="link-list-opt no-bdr">
+                                    <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Selected</span></a></li>
+                                    <li><a href="#"><em class="icon ni ni-bar-c"></em><span>Update Stock</span></a></li>
+                                    <li><a href="#"><em class="icon ni ni-invest"></em><span>Update Price</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        @foreach($categories as $product)
+        <div class="nk-tb-item">
+            <div class="nk-tb-col nk-tb-col-check">
+                <div class="custom-control custom-control-sm custom-checkbox notext">
+                    <input type="checkbox" class="custom-control-input" id="pid1">
+                    <label class="custom-control-label" for="pid1"></label>
+                </div>
+            </div>
+            <div class="nk-tb-col tb-col-sm">
+                <span class="tb-product">
+                  <span class="nk-menu-icon"><em class="icon ni ni-package-fill"></em></span>
+                  <span class="title">{{$product->name}}</span>
+                </span>
+            </div>
+            <div class="nk-tb-col nk-tb-col-tools">
+                <ul class="nk-tb-actions gx-1 my-n1">
+                    <li class="me-n1">
+                        <div class="dropdown">
+                            <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <ul class="link-list-opt no-bdr">
+                                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#updateCategory{{$product->id}}"><em class="icon ni ni-edit"></em><span>Edit Categories</span></a></li>
+                                    <li><a href="/DeletCategory/{{$product->id}}"><em class="icon ni ni-trash"></em><span>Remove Categories</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="modal fade" id="updateCategory{{$product->id}}">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title">Category Info</h5>
+                      <a href="#" class="close" data-bs-dismiss="modal" aria-label="Close">
+                          <em class="icon ni ni-cross"></em>
+                      </a>
                   </div>
-              </form>
+                  <div class="modal-body">
+                      <form action="/updateCategory/{{$product->id}}" method="post" class="form-validate is-alter">
+                      @csrf
+                          <div class="form-group">
+                              <label class="form-label" for="full-name">Category Name</label>
+                              <div class="form-control-wrap">
+                                  <input type="text" value="{{$product->name}}" name="name" class="form-control" id="full-name" required>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <button type="submit" class="btn btn-lg btn-primary">Save Informations</button>
+                          </div>
+                      </form>
+                  </div>
+                  <div class="modal-footer bg-light">
+                      <span class="sub-text">Modal Footer Text</span>
+                  </div>
+              </div>
           </div>
         </div>
-      </div>
-  </div>
-</div>
-<table class="mt-3 table align-middle mb-0 bg-white">
-    <thead class="bg-light">
-      <tr>
-        <th>Categories Name </th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($categories as $categorie)
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <p class="fw-bold mb-1 ms-3">{{$categorie->name}}</p>
+        @endforeach
+    </div>
+    {{ $categories->links() }}
+    </div>
+    <form action="/addCategory" method='POST'>
+        @csrf
+      <div class="nk-add-product toggle-slide toggle-slide-right toggle-screen-any" data-content="addProduct" data-toggle-screen="any" data-toggle-overlay="true" data-toggle-body="true" data-simplebar="init">
+        <div class="simplebar-wrapper" style="margin: -24px;">
+          <div class="simplebar-height-auto-observer-wrapper">
+            <div class="simplebar-height-auto-observer"></div>
           </div>
-        </td>
-        <td>
-          <svg data-bs-toggle="modal" data-bs-target="#updateCategory{{$categorie->id}}" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="cursor-pointer bi bi-pencil-square" viewBox="0 0 16 16">
-            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-          </svg>
-          <svg data-bs-toggle="modal" data-bs-target="#delectCat{{$categorie->id}}" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="ml-2 cursor-pointer bi bi-trash3" viewBox="0 0 16 16">
-            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
-          </svg>
-          <div class="modal fade" id="delectCat{{$categorie->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-body">
-                  <h1 class='text-center text-secondary'>Are you sure you want to delete this?</h1>
-                  <div class="button mt-3 mb-3 d-flex gap-2 justify-content-center">
-                      <a type="submit" class="btn btn-outline-danger" href="/DeletCategory/{{$categorie->id}}">Confirm</a>
-                      <button type="reset"  data-bs-dismiss="modal" class="btn btn-outline-dark">Close</button>
+          <div class="simplebar-mask">
+            <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+              <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: 100%; overflow: hidden scroll;">
+                <div class="simplebar-content" style="padding: 24px;">
+                  <div class="nk-block-head">
+              <div class="nk-block-head-content">
+                  <h5 class="nk-block-title">New Category</h5>
+                  <div class="nk-block-des">
+                      <p>Add information and add new category.</p>
                   </div>
-                </div>
               </div>
-            </div>
           </div>
-          <div class="modal fade" id="updateCategory{{$categorie->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h2>Add New Category</h2>
-                </div>
-                <div class="modal-body">
-                    <form action="/updateCategory/{{$categorie->id}}" method='post'>
-                        @csrf
-                        <input type="text" name='name' value='{{$categorie->name}}' class="form-control mt-3" placeholder="Product Name">
-                        <div class="button mt-3 mb-3 d-flex gap-2 justify-content-end">
-                            <button type="submit" class="btn btn-outline-success">Add</button>
-                            <button type="reset"  data-bs-dismiss="modal" class="btn btn-outline-dark">Close</button>
-                        </div>
-                    </form>
-                </div>
+          <div class="nk-block">
+              <div class="row g-3">
+                  <div class="col-12">
+                      <div class="form-group">
+                          <label class="form-label" for="product-title">Category Title</label>
+                          <div class="form-control-wrap">
+                              <input type="text" name="name" class="form-control" id="product-title">
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-12">
+                      <button class="btn btn-primary"><em class="icon ni ni-plus"></em><span>Add New</span></button>
+                  </div>
               </div>
-            </div>
           </div>
-        </td>
-      </tr>
-      @endforeach
-    </tbody>
-</table>
+      </div>
+    </form>
+</div></div></div><div class="simplebar-placeholder" style="width: auto; height: 866px;"></div></div><div class="simplebar-track simplebar-horizontal" style="visibility: hidden;"><div class="simplebar-scrollbar" style="width: 0px; display: none;"></div></div><div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar" style="height: 700px; display: block; transform: translate3d(0px, 0px, 0px);"></div></div></div>
+</div>
 @endsection

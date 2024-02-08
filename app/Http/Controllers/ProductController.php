@@ -11,7 +11,7 @@ use App\Models\ProductTag;
 class ProductController extends Controller
 {
     public function index(){
-        $products = Product::with('category')->with('tage')->get();
+        $products = Product::with('category')->with('tage')->orderBy('created_at', 'desc')->paginate(4);
         $TagList = [];
         foreach($products as $product){
             foreach($product['tage'] as $tages){
@@ -26,11 +26,19 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'price' => 'required',
+            'stock' => 'required',
             'description' => 'required',
             'category_id' => 'required',
             'tages_id' => '',
         ]);
-        $product = Product::create($validatedData);
+        // $product = Product::create($validatedData);
+        $product = new Product();
+        $product->name = $validatedData['name'];
+        $product->price = $validatedData['price'];
+        $product->stock = $validatedData['stock'];
+        $product->description = $validatedData['description'];
+        $product->category_id = $validatedData['category_id'];
+        $product->save();
         $lastInsertedId = $product->id;
         foreach($validatedData['tages_id'] as $dataTage){
             $tages = [

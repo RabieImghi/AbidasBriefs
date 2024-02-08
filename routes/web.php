@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoriesControllers;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\TagesControllers;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
+use App\Http\Middleware\Authenticate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +21,15 @@ use App\Http\Controllers\TagesControllers;
 */
 
 Route::get('/', [Controller::class, 'index']);
+// Route::get('/login', [AuthController::class, 'login']);
+// Route::get('/Register', [AuthController::class, 'Register']);
+// Route::get('/ForgetPassword', [AuthController::class, 'ForgetPassword']);
+// // Route::post('/User/login', [AuthController::class, 'loginUser']);
+
+
+Route::get('/Home', [Controller::class, 'index'])->middleware(Authenticate::class);;
+Route::get('/Users', [UserController::class, 'index']);
+
 Route::get('/Products', [ProductController::class, 'index']);
 Route::get('/Categories', [CategoriesControllers::class, 'index']);
 Route::post('/addProduct', [ProductController::class, 'add']);
@@ -32,3 +45,4 @@ Route::post('/addTags', [TagesControllers::class, 'add']);
 Route::post('/updateTags/{id}', [TagesControllers::class, 'update']);
 Route::get('/DeletTage/{id}', [TagesControllers::class, 'delet']);
 
+Route::get('/Orders', [SaleController::class, 'index']);

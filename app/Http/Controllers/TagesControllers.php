@@ -8,7 +8,7 @@ use App\Models\Tage;
 class TagesControllers extends Controller
 {
     public function index(){
-        $tages = Tage::all();
+        $tages = Tage::orderBy('created_at', 'desc')->paginate(7);
         return view("tages",compact('tages'));
     }
     public function add(Request $request){
